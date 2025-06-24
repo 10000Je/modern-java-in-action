@@ -1,4 +1,4 @@
-package com.manje.chap01;
+package com.manje.modernJavaInAction.chap01;
 
 import java.util.ArrayList;
 import java.util.Arrays;

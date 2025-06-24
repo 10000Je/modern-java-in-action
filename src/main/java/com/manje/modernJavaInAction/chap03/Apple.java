@@ -1,10 +1,10 @@
-package com.manje.chap01;
+package com.manje.modernJavaInAction.chap03;
 
 public class Apple {
     private int weight = 0;
-    private String color = "";
+    private Color color;
 
-    public Apple(int weight, String color) {
+    public Apple(int weight, Color color) {
         this.weight = weight;
         this.color = color;
     }
@@ -17,11 +17,11 @@ public class Apple {
         this.weight = weight;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
