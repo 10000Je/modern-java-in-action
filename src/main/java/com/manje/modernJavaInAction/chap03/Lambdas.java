@@ -2,6 +2,7 @@ package com.manje.modernJavaInAction.chap03;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -19,6 +20,11 @@ public class Lambdas {
 
         List<Apple> greenApples = filter(inventory, (Apple a) -> a.getColor() == Color.GREEN);
         System.out.println(greenApples);
+
+        Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight() - a2.getWeight();
+
+        inventory.sort(c);
+        System.out.println(inventory);
     }
 
     public static List<Apple> filter(List<Apple> inventory, Predicate<Apple> p) {
