@@ -18,8 +18,6 @@ public class FilteringApples {
         List<Apple> redApples = filterApplesByColor(inventory, Color.RED);
         System.out.println(redApples);
 
-        prettyPrintApple(inventory, new AppleFancyFormatter());
-
         List<Apple> greenApples2 = filter(inventory, new AppleColorPredicate());
         System.out.println(greenApples2);
 
@@ -67,13 +65,6 @@ public class FilteringApples {
             }
         }
         return result;
-    }
-
-    public static void prettyPrintApple(List<Apple> inventory, AppleFormatter f) {
-        for(Apple apple : inventory) {
-            String output = f.format(apple);
-            System.out.println(output);
-        }
     }
 
     public static List<Apple> filter(List<Apple> inventory, ApplePredicate p) {
