@@ -2,6 +2,8 @@ package com.manje.modernJavaInAction.chap05;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import static com.manje.modernJavaInAction.chap05.Dish.menu;
 import static java.util.Comparator.comparing;
@@ -38,6 +40,11 @@ public class Quiz {
                 .map(d -> 1)
                 .reduce(0, Integer::sum);
         System.out.println(count);
+
+        // 5-4
+        Stream.iterate(new int[] { 0, 1 }, arr -> new int[] { arr[1], arr[0] + arr[1] })
+                .limit(20)
+                .forEach(arr -> System.out.printf("(%d, %d), ", arr[0], arr[1]));
     }
 
 }
