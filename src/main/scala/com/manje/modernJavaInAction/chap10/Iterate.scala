@@ -1,34 +1,26 @@
 package com.manje.modernJavaInAction.chap10
 
-import scala.annotation.tailrec
-import scala.language.{implicitConversions, reflectiveCalls}
-
 object Iterate {
 
   def timesStandard(i: Int, f: => Unit): Unit = {
     f
-    if (i > 1) timesStandard(i - 1, f)
+    if (i > 1)
+      timesStandard(i - 1, f)
   }
 
-  def timesCurried(i: Int)(f: => Unit) : Unit = {
+  def timesCurried(i: Int)(f: => Unit): Unit = {
     f
-    if (i > 1) timesCurried(i - 1)(f)
+    if (i > 1)
+      timesCurried(i - 1)(f)
   }
 
-  trait TimesOps {
-    def times(f: => Unit): Unit
-  }
-
-  implicit def intToTimes(i: Int): TimesOps = new TimesOps {
+  implicit def intToTimes(i: Int) = new {
     def times(f: => Unit): Unit = {
-      @tailrec
-      def times(n: Int, f: => Unit): Unit = {
-        if (n > 0) {
-          f
-          times(n - 1, f)
-        }
+      def times(i: Int, f: => Unit): Unit = {
+        f
+        if (i > 1)
+          times(i - 1, f)
       }
-
       times(i, f)
     }
   }
@@ -44,7 +36,7 @@ object Iterate {
     println("The curried way:")
     timesCurried(3)(println("Hello World"))
 
-    println("The infixed way:")
+    println("The infix way:")
     3 times {
       println("Hello World")
     }
