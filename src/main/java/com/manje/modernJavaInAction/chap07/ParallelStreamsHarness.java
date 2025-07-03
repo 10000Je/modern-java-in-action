@@ -1,5 +1,7 @@
 package com.manje.modernJavaInAction.chap07;
 
+import com.manje.modernJavaInAction.chap07.parallelStreams.ParallelStreams;
+
 import java.util.concurrent.ForkJoinPool;
 import java.util.function.Function;
 

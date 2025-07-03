@@ -1,5 +1,7 @@
 package com.manje.modernJavaInAction.chap06;
 
+import com.manje.modernJavaInAction.chap06.partitionPrimeNumbers.PartitionPrimeNumbers;
+
 import java.util.function.Consumer;
 
 public class CollectorHarness {
