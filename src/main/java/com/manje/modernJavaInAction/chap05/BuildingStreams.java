@@ -1,8 +1,10 @@
 package com.manje.modernJavaInAction.chap05;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.function.IntSupplier;
@@ -11,7 +13,7 @@ import java.util.stream.Stream;
 
 public class BuildingStreams {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
         Stream<String> stream = Stream.of("Java 8", "Lambdas", "In", "Action");
         stream.map(String::toUpperCase).forEach(System.out::println);
 
@@ -56,7 +58,7 @@ public class BuildingStreams {
                 .limit(10)
                 .forEach(System.out::println);
 
-        long uniqueWords = Files.lines(Paths.get("src/main/resources/chap05/data.txt"), Charset.defaultCharset())
+        long uniqueWords = Files.lines(Path.of(BuildingStreams.class.getResource("./data.txt").toURI()), Charset.defaultCharset())
                 .flatMap(line -> Arrays.stream(line.split(" ")))
                 .distinct()
                 .count();
