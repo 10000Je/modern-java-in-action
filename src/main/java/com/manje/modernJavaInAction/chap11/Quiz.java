@@ -1,8 +1,11 @@
 package com.manje.modernJavaInAction.chap11;
 
 import java.util.Optional;
+import java.util.Properties;
 
 import static com.manje.modernJavaInAction.chap11.OptionalMain.findCheapestInsurance;
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
 
 public class Quiz {
 
@@ -21,6 +24,22 @@ public class Quiz {
                 .flatMap(Car::getInsurance)
                 .map(Insurance::getName)
                 .orElse("Unknown");
+    }
+
+    // 11-3
+    public static int readDuration(Properties props, String name) {
+        return Optional.ofNullable(props.getProperty(name))
+                .flatMap(Quiz::stringToInt)
+                .filter(i -> i > 0)
+                .orElse(0);
+    }
+
+    public static Optional<Integer> stringToInt(String s) {
+        try {
+            return of(Integer.parseInt(s));
+        } catch (NumberFormatException e) {
+            return empty();
+        }
     }
 
 }
