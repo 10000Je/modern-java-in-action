@@ -1,13 +1,12 @@
 package com.manje.modernJavaInAction.chap11;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Optional;
 import java.util.Properties;
 
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.util.Optional.*;
+import static org.junit.Assert.assertEquals;
 
 public class ReadPositiveIntParam {
 
@@ -46,7 +45,7 @@ public class ReadPositiveIntParam {
     }
 
     public static int readDurationWithOptional(Properties props, String name) {
-        return Optional.ofNullable(props.getProperty(name))
+        return ofNullable(props.getProperty(name))
                 .flatMap(Quiz::stringToInt)
                 .filter(i -> i > 0)
                 .orElse(0);

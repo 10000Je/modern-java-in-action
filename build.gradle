@@ -11,12 +11,17 @@ repositories {
     mavenCentral()
 }
 
+scala {
+    scalaVersion = "2.12.20"
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation 'org.scala-lang:scala-library:2.12.20'
-    implementation 'org.openjdk.jmh:jmh-core:1.35'
-    jmhAnnotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.35'
+    implementation 'junit:junit:4.12'
+    jmh 'org.openjdk.jmh:jmh-core:1.21'
+    jmh 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
+    implementation 'com.typesafe.akka:akka-actor_2.12:2.5.16'
+    implementation 'com.typesafe.akka:akka-stream_2.12:2.5.16'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
 }
 
 test {
